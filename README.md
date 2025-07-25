@@ -5,8 +5,10 @@ Adam Petrovic's resume built with LaTeX.
 To compile the resume PDF locally:
 
 ```bash
-xelatex resume.tex
+pdflatex resume.tex
 ```
+
+Note: Requires the Lato font and FontAwesome packages to be installed in your LaTeX distribution.
 
 ## Automated Releases
 
@@ -16,7 +18,7 @@ This repository automatically generates and releases the resume PDF using GitHub
 - **Output**: Date-stamped release (e.g., `resume-2025-07-25`) with attached PDF
 - **Location**: Check the [Releases](../../releases) page for the latest version
 
-The workflow compiles the LaTeX source using XeLaTeX and creates a new release with the generated PDF attached.
+The workflow compiles the LaTeX source using pdflatex and creates a new release with the generated PDF attached.
 
 ## Files
 
