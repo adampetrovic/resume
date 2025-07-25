@@ -1,138 +1,158 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Friggeri Resume/CV
-% XeLaTeX Template
-% Version 1.0 (5/5/13)
-%
-% This template has been downloaded from:
-% http://www.LaTeXTemplates.com
-%
-% Original author:
-% Adrien Friggeri (adrien@friggeri.net)
-% https://github.com/afriggeri/CV
-%
-% License:
-% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
-%
-% Important notes:
-% This template needs to be compiled with XeLaTeX and the bibliography, if used,
-% needs to be compiled with biber rather than bibtex.
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt,letterpaper]{article}
+\usepackage[letterpaper,margin=0.5in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{mdwlist}
+\usepackage[default]{lato}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{fontawesome}
+\usepackage{enumitem}
+\DeclareFontFamily{U}{fontawesomeOne}{}
+\DeclareFontShape{U}{fontawesomeOne}{m}{n}
+{<-> FontAwesome--fontawesomeone}{}
+\DeclareRobustCommand\FAone{\fontencoding{U}\fontfamily{fontawesomeOne}\selectfont}
+\pagestyle{empty}
+\setlength{\tabcolsep}{0em}
 
-\documentclass[]{friggeri-cv} % Add 'print' as an option into the square bracket to remove colors from this template for printing
+% indentsection style, used for sections that aren't already in lists
+% that need indentation to the level of all text in the document
+\newenvironment{indentsection}[1]%
+{\begin{list}{}%
+{\setlength{\leftmargin}{#1}}%
+     \item[]
+}
+{\end{list}}
 
+% opposite of above; bump a section back toward the left margin
+\newenvironment{unindentsection}[1]%
+{\begin{list}{}%
+{\setlength{\leftmargin}{-0.5#1}}%
+\item[]%
+}
+{\end{list}}
+
+% format two pieces of text, one left aligned and one right aligned
+\newcommand{\headerrow}[2]
+{\begin{tabular*}{\linewidth}{l@{\extracolsep{\fill}}r}
+#1 &
+#2 \\
+\end{tabular*}}
+
+% and the actual content starts here
 \begin{document}
 
-\header{adam}{petrovic}{infrastructure engineer} % Your name and current job title/field
+\begin{center}
+	{\LARGE \textbf{Adam Petrovic}}\\
+        \vspace{0.10cm}
+	Sydney, Australia
+	\vspace{0.20cm}
+	\\
+	\raisebox{-0.1\height} {\Large \faPhoneSquare} +61 400 077 049 \ \ \ \ \raisebox{-0.1\height}{\Large \faEnvelopeSquare} adam@petrovic.com.au \ \ \ \raisebox{-0.1\height}{\Large \faLinkedinSquare} linkedin.com/in/adampetrovic
+\end{center}
 
-%----------------------------------------------------------------------------------------
-%	SIDEBAR SECTION
-%----------------------------------------------------------------------------------------
+\hrule
+\vspace{-1em}
+\subsection*{\Large Experience}
 
-\begin{aside} % In the aside, each new line forces a line break
-\section{contact}
-Sydney, Australia
-~
-+61 400 077 049
-\textbf{e:}~\href{mailto:me@adampetrovic.me}{me@adampetrovic.me}
-\textbf{w:}~\href{http://www.adampetrovic.me}{adampetrovic.me}
-\section{programming}
-Python, Golang, PHP
-Javascript, C
-\section{other}
-Linux, git, zsh, i3, Thrift, Docker, RabbitMQ, MySQL, nginx, HAProxy, AWS, Puppet, Redis, Memcache
-\end{aside}
-
-%----------------------------------------------------------------------------------------
-%	EDUCATION SECTION
-%----------------------------------------------------------------------------------------
-
-\section{education}
-
-\begin{entrylist}
-%------------------------------------------------
-\entry
-{2008--2012}
-{Bachelor of Information Technology (Computer Science)}
-{The University of Sydney}
-{
-    \begin{itemize}
-        \item Honour Roll for Distinction Average in IT (2008 – 2010)
-        \item Treasurer of the Sydney University IT Society (2009 / 2010)
-        \item Treasurer of the Sydney University IT Society (2010 / 2011)
-    \end{itemize}
-    ~
-}
-%------------------------------------------------
-\entry
-{2004--2007}
-{Higher School Certificate}
-{Newington College, Stanmore}
-{
-    \begin{itemize}
-        \item Full College Prefect
-        \item Metcalfe House Honour Colours
-        \item 1st Grade Football
-        \item 3rd Grade GPS Representative Football
-    \end{itemize}
-}
-%------------------------------------------------
-\end{entrylist}
-
-%----------------------------------------------------------------------------------------
-%	WORK EXPERIENCE SECTION
-%----------------------------------------------------------------------------------------
-
-\section{experience}
-
-\begin{entrylist}
-%------------------------------------------------
-\entry
-{2011--Now}
-{Freelancer.com}
-{Sydney, Australia \& Vancouver, Canada}
-{\emph{Senior Infrastructure Engineer} \\
-
-Main responsibilities included the design, development, deployment and maintenance of the most critical services to the core of the platform’s functionality, which sees over 50,000 concurrent users 
-at peak load. I was the technical team lead on over 10 separate projects, some of the most notable including the platform’s realtime messaging and notifications systems, the main newsfeed and a generic file service which the entire platform utilises. \\
-
-Other Responsibilites:\\
-
-\begin{itemize}
-    \item Full deployment and maintenance of ‘micro-services’ including the deployment of load-balancing technologies such as HAProxy and Nginx, firewall configuration and DNS configuration.
-    \item Extensive experience in the AWS environment, including development of deployment systems, the use of Puppet for host configuration and performance tuning of applications to improve response to production load.
-    \item Lead the introduction of a number of fundamental tools and projects such as the migration of SVN to Git, RabbitMQ, which routes over a million messages a day and Apache Thrift to simplify the transport layer.
+\renewcommand\labelitemi{}
+\renewcommand\labelitemii{$\bullet$}
+\begin{itemize}[leftmargin=1em]
+	\parskip=0.1em
+	\item
+	      \headerrow
+	      {\textbf{Atlassian} (10 Years)}
+	      {\textbf{Sydney, Australia}}
+	      \headerrow
+    	      {\emph{Senior Engineer, Transaction Data Platform}}
+    	      {\emph{August 2023 -- Present}}
+    	      \begin{itemize*}
+    	      	\item Architected S3-compatible object storage platform in Kotlin serving Atlassian's largest engineering teams, delivering enterprise-grade data residency, encryption, and backup capabilities across multiple geographic regions
+                    \item Designed and implemented Python Locust-based capacity testing framework to identify system bottlenecks, successfully scaling load tests to \textbf{1.3M requests per minute} and preventing potential service degradation
+                    \item Established performance SLOs for critical upload/download operations, improving operational maturity and service reliability across the Transaction Data Platform organization
+                    \item Transitioned from management to senior individual contributor role, focusing technical expertise on scaling infrastructure solutions that support company-wide data storage requirements
+    	      \end{itemize*}
+            \headerrow
+    	      {\emph{Engineering Manager, Observability}}
+    	      {\emph{October 2020 -- August 2023}}
+    	      \begin{itemize*}
+                    \item Led 12-month Better Metrics program migrating \textbf{9,500 engineers} from Datadog to SignalFx, delivering \textbf{\$2M+ annual cost savings} while maintaining 99.9\% uptime of mission-critical metrics pipeline serving enterprise customers
+    	      	\item Architected multi-vendor metrics ingestion pipeline supporting 5 concurrent evaluation platforms, enabling seamless vendor comparison while processing \textbf{2.2M messages per second} without service disruption
+    	      	\item Implemented config-as-code automation framework accelerating engineer migration velocity by \textbf{300\%}, ensuring 100\% compliance with contractual migration deadlines across all engineering teams
+    	      	\item Migrated observability infrastructure from Kinesis/Golang to Kafka/Apache Flink stream processing architecture, scaling system capacity to handle \textbf{200TB daily log volume} while reducing processing latency by 40\%
+    	      	
+    	      \end{itemize*}
+            \headerrow
+    	      {\emph{Senior Engineer, Observability}}
+    	      {\emph{June 2017 -- October 2020}}
+    	      \begin{itemize*}
+    	      	\item Developed Pollinator synthetic monitoring platform in Golang, enabling \textbf{100\% of Atlassian's production services} to monitor reliability and performance across US, APAC, and EMEA regions with real-time alerting capabilities
+            
+                    \item Designed Post-Deployment Verification (PDV) system within Pollinator, reducing production incident detection time by \textbf{75\%} and preventing customer-facing outages through automated health checks
+                    \item Scaled mission-critical metrics pipeline from single-service to 15-shard architecture, increasing processing throughput from 18M to \textbf{180M metrics per minute (1000\% improvement)} while maintaining zero data loss
+                    \item Enhanced GoStatsd open-source metrics aggregation with Prometheus-style histogram support, enabling \textbf{500+ internal services} to calculate accurate percentile measurements for SLO compliance monitoring
+                    \item Operated company-wide metrics infrastructure processing 180M metrics per minute to SignalFx, maintaining \textbf{99.99\% uptime} for monitoring systems critical to Atlassian's \$2B+ revenue streams
+    	      \end{itemize*}
+           \headerrow
+    	      {\emph{Senior Site Reliability Engineer, Jira Cloud}}
+    	      {\emph{March 2015 -- June 2017}}
+    	      \begin{itemize*}
+                    \item Led cross-continental team of \textbf{10 SREs} to deploy Jira Cloud's European infrastructure for multi-tenant architecture, delivering project \textbf{2 weeks ahead of schedule} and enabling Atlassian Summit product announcement on time
+    	      	\item Refactored Jira Cloud site import process eliminating \textbf{50\%+ of on-call incidents}, reducing failed customer imports by \textbf{80\%} and decreasing team operational toil by 6 hours per week
+                    \item Implemented "Wheel of Misfortune" incident response training program company-wide, improving service reliability across \textbf{200+ engineering teams} through systematic chaos engineering practices adapted from Google SRE methodology
+                    \item Architected multi-tenant cloud migration supporting Jira's expansion into European markets, establishing foundation for Atlassian's international growth and GDPR compliance requirements
+    	      \end{itemize*}
+	      	    
+	\item
+	      \headerrow
+	      {\textbf{Freelancer.com} (3.5 Years)}
+	      {\textbf{Sydney, Australia}}
+	      \headerrow
+	      {\emph{Software Engineer}}
+	      {\emph{August 2011 -- February 2015}}
+	      \begin{itemize*}
+                \item Architected high-throughput authentication, messaging, and real-time notification platform using Golang/Python APIs with Redis pub-sub, scaling to handle \textbf{50,000+ requests per second} in production environment
+                \item Led Apache Thrift adoption for monolith-to-microservices migration from PHP to Python, accelerating API development velocity by \textbf{6 months} through decoupled contract-first architecture across development organization
+                \item Implemented RabbitMQ message-passing infrastructure enabling asynchronous event-driven architecture, removing email delivery, analytics, and fraud detection from critical request path and improving response times by \textbf{40\%}
+                \item Operated mission-critical platform services supporting Freelancer.com's marketplace infrastructure, ensuring \textbf{99.9\% uptime} for authentication and messaging systems serving millions of global users
+	      \end{itemize*}      	      
 \end{itemize}
-~
-}
-%------------------------------------------------
-\entry
-{2011}
-{The University Of Sydney}
-{Sydney, Australia}
-{\emph{Tutor, Software Development Project (Advanced)} \\
 
-Assisting students with the various aspects of managing a team in a software development environment.
-This role included a knowledge of the various aspects of “Extreme Programming” as well as other development methodologies such as Test Driven Development and Pair Programming. \\
-}
-\end{entrylist}
+\hrule
+\vspace{-1em}
+\subsection*{\Large Education}
 
-%----------------------------------------------------------------------------------------
-%	INTERESTS SECTION
-%----------------------------------------------------------------------------------------
+\begin{itemize}[leftmargin=1em]
+	\parskip=0.1em
+		
+	\item
+	      \headerrow
+	      {\textbf{The University of Sydney}}
+	      {\textbf{Sydney, Australia}}
+	      \headerrow
+	      {\emph{Bachelor of Information Technology (Major in Computer Science)}}
+	      {\emph{March 2008 -- July 2012}}
+            \begin{itemize*}
+                \item Dean's List - Distinction Average (2008 - 2012)
+            \end{itemize*}
+	      	      
+\end{itemize}
 
-\section{interests}
+\hrule
+\vspace{-1em}
+\subsection*{\Large Skills}
 
-\textbf{professional:} distributed systems, programming, deployment management, automation \\
-\textbf{personal:} piano, chess, photography, sports
+\hyphenpenalty=1000
+\begin{itemize}[leftmargin=1em,noitemsep]
+	\item \textbf{Programming Languages:}
+	      Kotlin, Golang, Python, Java, JavaScript
+        \item \textbf{Infrastructure \& Cloud:}
+            AWS, Kubernetes, Docker, Spinnaker, Apache Flink, Kafka
+        \item \textbf{Observability \& Monitoring:}
+            SignalFx, Datadog, Prometheus, Grafana, Splunk, StatsD, Locust
+        \item \textbf{Databases \& Storage:}
+            PostgreSQL, DynamoDB, Redis, MySQL, S3, Memcache
+\end{itemize}
 
-%----------------------------------------------------------------------------------------
-%	REFERENCES SECTION
-%----------------------------------------------------------------------------------------
-
-\section{references}
-
-Available on request
 
 
 \end{document}
