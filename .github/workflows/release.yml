@@ -1,0 +1,41 @@
+name: Generate Resume PDF and Create Release
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Compile LaTeX to PDF
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: resume.tex
+          latexmk_use_xelatex: true
+          latexmk_shell_escape: true
+          
+      - name: Get current date
+        id: date
+        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+        
+      - name: Rename PDF with date
+        run: cp resume.pdf resume-${{ steps.date.outputs.date }}.pdf
+        
+      - name: Create Release and Upload PDF
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: resume-${{ steps.date.outputs.date }}
+          name: Resume - ${{ steps.date.outputs.date }}
+          body: |
+            Automatically generated resume PDF for ${{ steps.date.outputs.date }}
+            
+            This release contains the latest version of Adam's resume compiled from LaTeX source.
+          files: |
+            resume-${{ steps.date.outputs.date }}.pdf
+          token: ${{ secrets.GITHUB_TOKEN }}
