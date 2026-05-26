@@ -3,10 +3,11 @@ name: Generate Resume PDF and Create Release
 on:
   push:
     branches: [ master ]
+  pull_request:
   workflow_dispatch:
 
 jobs:
-  build-and-release:
+  build:
     runs-on: ubuntu-latest
     
     steps:
@@ -22,12 +23,15 @@ jobs:
           
       - name: Get current date
         id: date
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
         run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
         
       - name: Rename PDF with date
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
         run: cp resume.pdf resume-${{ steps.date.outputs.date }}.pdf
         
       - name: Create Release and Upload PDF
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
         uses: softprops/action-gh-release@v1
         with:
           tag_name: resume-${{ steps.date.outputs.date }}
