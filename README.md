@@ -2,13 +2,29 @@ Adam Petrovic's resume built with LaTeX.
 
 ## Building
 
-To compile the resume PDF locally:
+### Docker
+
+Recommended, because it includes the required LaTeX packages:
 
 ```bash
-pdflatex resume.tex
+docker run --rm --platform linux/amd64 \
+  -v "$PWD":/workdir \
+  -w /workdir \
+  ghcr.io/xu-cheng/texlive-full:latest \
+  pdflatex -interaction=nonstopmode resume.tex
 ```
 
-Note: Requires the Lato font and FontAwesome packages to be installed in your LaTeX distribution.
+This writes `resume.pdf` in the repository root.
+
+On Apple Silicon, keep `--platform linux/amd64`; the image does not currently publish an arm64 manifest.
+
+### Local LaTeX
+
+If you have a local LaTeX distribution with Lato and FontAwesome installed:
+
+```bash
+pdflatex -interaction=nonstopmode resume.tex
+```
 
 ## Automated Releases
 
