@@ -1,132 +1,113 @@
 \documentclass[10pt,letterpaper]{article}
-\usepackage[letterpaper,margin=0.55in]{geometry}
-\usepackage[utf8]{inputenc}
-\usepackage[default]{lato}
+
+% ATS-friendly, plain-text-first resume. No icons, graphics, tables for core content,
+% or template-specific assets from previous versions.
+\usepackage[letterpaper,margin=0.62in]{geometry}
 \usepackage[T1]{fontenc}
-\usepackage{textcomp}
-\usepackage{fontawesome}
+\usepackage[utf8]{inputenc}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
-\pagestyle{empty}
-\setlength{\tabcolsep}{0em}
-\setlength{\parindent}{0pt}
-\setlist[itemize]{leftmargin=1.15em,itemsep=0.15em,topsep=0.15em,parsep=0em,partopsep=0em}
-\renewcommand\labelitemi{--}
-\renewcommand\labelitemii{$\bullet$}
+\usepackage{titlesec}
+\usepackage{array}
 
-\newcommand{\headerrow}[2]{%
-  \begin{tabular*}{\linewidth}{l@{\extracolsep{\fill}}r}
-    #1 & #2 \\
-  \end{tabular*}}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlist[itemize]{leftmargin=1.2em,itemsep=2pt,topsep=2pt,parsep=0pt,partopsep=0pt}
+\titleformat{\section}{\large\bfseries}{}{0pt}{}[\vspace{-2pt}\titlerule]
+\titlespacing*{\section}{0pt}{8pt}{4pt}
 
 \newcommand{\role}[4]{%
-  \headerrow{\textbf{#1}}{\textbf{#2}}
-  \headerrow{\emph{#3}}{\emph{#4}}
+  \textbf{#1} \hfill #2\\
+  \textit{#3} \hfill \textit{#4}\vspace{1pt}
 }
 
-\newcommand{\sectionrule}[1]{%
-  \vspace{0.35em}
-  \hrule
-  \vspace{-0.7em}
-  \subsection*{\large #1}
-  \vspace{-0.35em}
-}
+\newcommand{\project}[2]{\textbf{#1}: #2}
 
 \begin{document}
 
-\begin{center}
-  {\LARGE \textbf{Adam Petrovic}}\\
-  \vspace{0.08cm}
-  Senior Software Engineer \textbar{} Distributed Systems, Cloud Infrastructure, Reliability\\
-  Sydney, Australia\\
-  \vspace{0.12cm}
-  \raisebox{-0.1\height}{\faPhoneSquare} [phone removed] \quad
-  \raisebox{-0.1\height}{\faEnvelopeSquare} \href{}{adam [at] petrovic [dot] com [dot] au} \quad
-  \raisebox{-0.1\height}{\faLinkedinSquare} \href{https://linkedin.com/in/adampetrovic}{linkedin.com/in/adampetrovic} \quad
-  \raisebox{-0.1\height}{\faGithubSquare} \href{https://github.com/adampetrovic}{github.com/adampetrovic}
-\end{center}
+{\LARGE\textbf{Adam Petrovic}}\\
+Sydney, Australia \;|\; [phone removed] \;|\; \href{}{adam [at] petrovic [dot] com [dot] au}\\
+\href{https://linkedin.com/in/adampetrovic}{linkedin.com/in/adampetrovic} \;|\; \href{https://github.com/adampetrovic}{github.com/adampetrovic} \;|\; \href{https://adampetrovic.me}{adampetrovic.me}
 
-\sectionrule{Profile}
-Senior engineer with 14+ years building and operating high-scale cloud platforms, including 10+ years at Atlassian across Jira Cloud, Observability, and Transaction Data Platform. Strengths include distributed systems, Kubernetes, storage, metrics pipelines, incident response, cost optimisation, and pragmatic technical leadership. Known for turning ambiguous infrastructure problems into production systems, reusable patterns, and operational practices that scale across teams.
+\section*{Senior Software Engineer -- Cloud Infrastructure, Distributed Systems, Reliability}
+Senior engineer with 14+ years of experience building high-scale cloud platforms and 10+ years at Atlassian across Jira Cloud, Observability, and Transaction Data Platform. I specialise in distributed systems, storage, Kubernetes, observability, incident response, and multi-cloud infrastructure. My strongest work is turning ambiguous platform problems into reliable production systems, clear technical direction, and reusable engineering patterns adopted beyond my immediate team.
 
-\sectionrule{Experience}
-
-\begin{itemize}[leftmargin=0em,label={}]
-  \item
-  \role{Atlassian}{Sydney, Australia}{Senior Engineer, Transaction Data Platform}{August 2023 -- Present}
-  \begin{itemize}
-    \item Tech-led Object Store on GCP staging work, establishing foundational multi-cloud capabilities and delivering a functionally complete deployment four weeks ahead of the target milestone.
-    \item Led project planning, risk tracking, and dependency management patterns for the GCP migration; the approach was adopted by multiple Transaction Data Platform teams as a template for their own GCP readiness work.
-    \item Designed and implemented S3-compatible object storage capabilities in Kotlin, including data residency, encryption, backup, checksum handling, and multi-shard deployment support.
-    \item Built S3 Inventory and DynamoDB export ingestion pipelines into Socrates, enabling service-level cost attribution, object verification, and self-service analytics over multi-terabyte datasets.
-    \item Drove critical incident response for Object Store incidents, including proving no data loss during a Sev 2, implementing point-in-time restore support, and turning incident learnings into continuous verification work.
-    \item Authored strategic RFCs for GCS checksum handling, TCS dependency removal, seekable compression, and other storage architecture decisions balancing reliability, cost, and migration complexity.
-    \item Created \texttt{sd-diff-pipe}, a Bitbucket Pipeline that detects risky service descriptor changes before deployment; adopted by Object Store, Media, and ERS with broader TDP interest.
-    \item Delivered performance SLOs and Locust-based capacity tests for upload/download paths, scaling tests to 1.3M requests per minute and grounding SLOs in production traffic patterns.
-    \item Contributed heavily to engineering flow and quality through 162 PRs authored, 681 PRs reviewed, and 22 Confluence pages created in the FY26H1 cycle.
-  \end{itemize}
-
-  \item
-  \role{Atlassian}{Sydney, Australia}{Engineering Manager, Observability}{October 2020 -- August 2023}
-  \begin{itemize}
-    \item Led the Better Metrics program migrating Atlassian engineering from Datadog to SignalFx, delivering more than \$2M in annual savings while protecting the reliability of the company-wide metrics platform.
-    \item Managed the Observability metrics team through vendor evaluation, migration planning, customer communication, and operational execution across thousands of internal engineers.
-    \item Oversaw multi-vendor ingestion architecture supporting concurrent evaluation platforms while the production pipeline processed millions of messages per second.
-    \item Built config-as-code migration automation that increased team migration velocity and improved compliance with contractual migration deadlines.
-    \item Led hiring, coaching, performance conversations, incident reviews, and roadmap planning while staying close to technical design and operational risk.
-  \end{itemize}
-
-  \item
-  \role{Atlassian}{Sydney, Australia}{Senior Engineer, Observability}{June 2017 -- October 2020}
-  \begin{itemize}
-    \item Built and operated Atlassian's company-wide metrics infrastructure, scaling ingestion to 180M metrics per minute while maintaining high reliability for critical monitoring workflows.
-    \item Developed Pollinator, a Go-based synthetic monitoring and post-deployment verification platform used by production services across regions to detect reliability and performance regressions.
-    \item Enhanced GoStatsD with Prometheus-style histogram support, enabling accurate percentile and SLO measurements for hundreds of services.
-    \item Migrated observability infrastructure from Kinesis/Golang components toward Kafka and Apache Flink stream processing, increasing throughput and reducing operational constraints.
-  \end{itemize}
-
-  \item
-  \role{Atlassian}{Sydney, Australia}{Senior Site Reliability Engineer, Jira Cloud}{March 2015 -- June 2017}
-  \begin{itemize}
-    \item Led a cross-continental SRE group delivering Jira Cloud's European infrastructure ahead of a public product milestone.
-    \item Refactored Jira Cloud site import processes, substantially reducing failed customer imports, on-call incidents, and repeated operational toil.
-    \item Established incident response and reliability practices, including Wheel of Misfortune training adapted from Google SRE practices for Atlassian teams.
-    \item Operated multi-tenant Jira Cloud infrastructure during a period of rapid enterprise and international growth.
-  \end{itemize}
-
-  \item
-  \role{Freelancer.com}{Sydney, Australia}{Software Engineer}{August 2011 -- February 2015}
-  \begin{itemize}
-    \item Built and operated authentication, messaging, notification, email, analytics, and fraud-detection platform services for a global marketplace.
-    \item Helped move critical systems from PHP monolith patterns toward Python and Go services using Apache Thrift, Redis, RabbitMQ, and contract-first APIs.
-    \item Improved request-path latency and operational isolation by moving asynchronous work onto event-driven infrastructure.
-  \end{itemize}
-\end{itemize}
-
-\sectionrule{Selected Public Projects}
+\section*{Core Strengths}
 \begin{itemize}
-  \item \textbf{home-ops} -- Production-style bare-metal Kubernetes homelab managed with Talos Linux, Flux, Helm, Kustomize, SOPS, Rook-Ceph, and VolSync. \href{https://github.com/adampetrovic/home-ops}{github.com/adampetrovic/home-ops}
-  \item \textbf{pi-telegram-bot} -- TypeScript Telegram bot orchestrating coding-agent sessions over RPC. \href{https://github.com/adampetrovic/pi-telegram-bot}{github.com/adampetrovic/pi-telegram-bot}
-  \item \textbf{dotfiles} -- Chezmoi-managed development environment and automation in TypeScript. \href{https://github.com/adampetrovic/dotfiles}{github.com/adampetrovic/dotfiles}
-  \item \textbf{abb-cvc-extract} -- Python tool extracting time-series capacity data from Aussie Broadband CVC graph images. \href{https://github.com/adampetrovic/abb-cvc-extract}{github.com/adampetrovic/abb-cvc-extract}
+  \item Distributed systems and storage platforms: object storage, sharding, replication, data integrity, backup, restore, cost attribution, capacity testing.
+  \item Cloud and Kubernetes infrastructure: AWS, GCP, Kubernetes, KITT, Spinnaker, service descriptors, deployment automation, multi-region and multi-cloud migration.
+  \item Reliability leadership: incident response, SLOs, post-incident analysis, operational readiness, on-call improvements, synthetic monitoring, observability platforms.
+  \item Technical direction: RFCs, architecture trade-offs, project planning, risk management, cross-team alignment, mentoring, engineering management.
 \end{itemize}
 
-\sectionrule{Education}
-\begin{itemize}[leftmargin=0em,label={}]
-  \item
-  \role{The University of Sydney}{Sydney, Australia}{Bachelor of Information Technology, Computer Science}{March 2008 -- July 2012}
-  \begin{itemize}
-    \item Dean's List; distinction average.
-  \end{itemize}
+\section*{Experience}
+
+\role{Atlassian}{Sydney, Australia}{Senior Engineer, Transaction Data Platform / Object Store}{August 2023 -- Present}
+\begin{itemize}
+  \item Tech-led Object Store's GCP staging migration, establishing foundational multi-cloud capability for a critical internal storage platform and delivering a functionally complete deployment four weeks ahead of the target milestone.
+  \item Created the project plan, milestone model, risk tracking, and dependency-management approach for the GCP migration; the format was adopted by multiple Transaction Data Platform teams as their template for GCP readiness work.
+  \item Designed and implemented production storage capabilities in Kotlin across S3-compatible object storage, data residency, encryption, backup, checksum handling, shard provisioning, and GCS integration.
+  \item Authored strategic RFCs for GCS checksum handling, TCS dependency removal, seekable compression, and related Object Store architecture decisions, balancing reliability, operational simplicity, migration risk, and hosting cost.
+  \item Built S3 Inventory and DynamoDB export ingestion into Socrates, enabling service-level cost attribution, object-level verification, and self-service analytics over multi-terabyte datasets.
+  \item Responded to critical Object Store incidents, including implementing a Socrates pipeline during a Sev 2, proving no data loss through analysis, and converting the response into a continuous object-verification initiative for one of the platform's highest risks.
+  \item Implemented point-in-time restore support for overwritten objects and investigated complex customer-impacting behaviours including 409 conflicts, retry semantics, credential-provider issues, and multi-shard rate-limiting correctness.
+  \item Created \texttt{sd-diff-pipe}, a Bitbucket Pipeline that detects risky service descriptor and archetype changes before deployment; adopted by Object Store, Media, and ERS with broader team interest.
+  \item Established upload/download performance SLOs grounded in production traffic patterns and built Locust-based capacity tests that scaled to 1.3M requests per minute.
+  \item In FY26H1, authored 162 pull requests, reviewed 681 pull requests, created 22 Confluence pages, and opened 85 Jira tickets while continuing project leadership and incident-response work.
 \end{itemize}
 
-\sectionrule{Skills}
+\role{Atlassian}{Sydney, Australia}{Engineering Manager, Observability}{October 2020 -- August 2023}
+\begin{itemize}
+  \item Led the Better Metrics program migrating Atlassian engineering from Datadog to SignalFx, delivering more than \$2M in annual savings while maintaining reliability of company-wide metrics workflows.
+  \item Managed an Observability engineering team through vendor evaluation, migration planning, stakeholder communication, operational risk management, hiring, coaching, and performance development.
+  \item Directed multi-vendor ingestion work that allowed concurrent platform evaluation while the production metrics pipeline handled millions of messages per second.
+  \item Drove config-as-code migration automation to increase migration throughput, reduce manual coordination, and meet contractual migration deadlines across a large internal customer base.
+  \item Kept technical involvement in architecture, incident reviews, roadmap decisions, and operational readiness while leading people-management responsibilities.
+\end{itemize}
+
+\role{Atlassian}{Sydney, Australia}{Senior Engineer, Observability}{June 2017 -- October 2020}
+\begin{itemize}
+  \item Built and operated Atlassian's company-wide metrics infrastructure, scaling ingestion to 180M metrics per minute for critical production monitoring and alerting.
+  \item Developed Pollinator, a Go-based synthetic monitoring and post-deployment verification platform used by production services across regions to detect reliability and performance regressions.
+  \item Extended GoStatsD with Prometheus-style histogram support, enabling accurate percentile and SLO measurement for hundreds of internal services.
+  \item Migrated observability components toward Kafka and Apache Flink stream processing, improving scalability and reducing operational constraints in high-volume telemetry pipelines.
+\end{itemize}
+
+\role{Atlassian}{Sydney, Australia}{Senior Site Reliability Engineer, Jira Cloud}{March 2015 -- June 2017}
+\begin{itemize}
+  \item Led a cross-continental SRE group delivering Jira Cloud European infrastructure ahead of a public product milestone, supporting international expansion and enterprise readiness.
+  \item Refactored Jira Cloud site import processes, reducing failed customer imports, on-call incidents, and recurring operational toil.
+  \item Introduced and facilitated incident-response training based on Google's Wheel of Misfortune model, helping teams practise production failure scenarios before real incidents.
+  \item Operated multi-tenant Jira Cloud infrastructure through a period of rapid customer, region, and reliability growth.
+\end{itemize}
+
+\role{Freelancer.com}{Sydney, Australia}{Software Engineer}{August 2011 -- February 2015}
+\begin{itemize}
+  \item Built and operated authentication, messaging, notification, email, analytics, and fraud-detection platform services for a global marketplace.
+  \item Helped move critical systems from PHP monolith patterns toward Python and Go services using Apache Thrift, Redis, RabbitMQ, and contract-first APIs.
+  \item Improved request-path latency and operational isolation by moving asynchronous work onto event-driven infrastructure.
+\end{itemize}
+
+\section*{Selected Public Work}
+\begin{itemize}
+  \item \project{home-ops}{Bare-metal Kubernetes homelab using Talos Linux, Flux, Helm, Kustomize, SOPS, Rook-Ceph, and VolSync. Demonstrates production-style GitOps, storage, backup, and platform operations. \href{https://github.com/adampetrovic/home-ops}{github.com/adampetrovic/home-ops}}
+  \item \project{pi-telegram-bot}{TypeScript Telegram bot that orchestrates coding-agent sessions over RPC, reflecting current AI-assisted engineering workflows. \href{https://github.com/adampetrovic/pi-telegram-bot}{github.com/adampetrovic/pi-telegram-bot}}
+  \item \project{dotfiles}{Chezmoi-managed development environment and automation, including TypeScript tooling for repeatable local setup. \href{https://github.com/adampetrovic/dotfiles}{github.com/adampetrovic/dotfiles}}
+  \item \project{abb-cvc-extract}{Python tool extracting time-series data from Aussie Broadband CVC graph images. \href{https://github.com/adampetrovic/abb-cvc-extract}{github.com/adampetrovic/abb-cvc-extract}}
+\end{itemize}
+
+\section*{Technical Skills}
 \begin{itemize}
   \item \textbf{Languages:} Kotlin, Go, Python, Java, TypeScript, JavaScript, SQL, Bash
-  \item \textbf{Cloud \& Infrastructure:} AWS, GCP, Kubernetes, Docker, Talos Linux, Flux, Helm, Kustomize, Spinnaker
-  \item \textbf{Data \& Storage:} S3, GCS, DynamoDB, PostgreSQL, MySQL, Redis, Kafka, Apache Flink, RabbitMQ
-  \item \textbf{Reliability \& Observability:} SignalFx, Datadog, Prometheus, Grafana, Splunk, StatsD, Sentry, Locust, incident response, SLOs
-  \item \textbf{Leadership:} technical strategy, RFCs, project leadership, engineering management, mentoring, hiring, cross-team influence
+  \item \textbf{Cloud and Infrastructure:} AWS, GCP, Kubernetes, Docker, Talos Linux, Flux, Helm, Kustomize, Spinnaker, CI/CD
+  \item \textbf{Data and Storage:} S3, GCS, DynamoDB, PostgreSQL, MySQL, Redis, Kafka, Apache Flink, RabbitMQ, object storage, sharding
+  \item \textbf{Reliability and Observability:} SignalFx, Datadog, Prometheus, Grafana, Splunk, StatsD, Sentry, Locust, incident response, SLOs
 \end{itemize}
+
+\section*{Education}
+\textbf{The University of Sydney} \hfill Sydney, Australia\\
+Bachelor of Information Technology, Computer Science \hfill March 2008 -- July 2012\\
+Dean's List; distinction average.
 
 \end{document}
