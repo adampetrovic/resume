@@ -34,7 +34,7 @@
 \vspace{-0.15cm}
 
 \begin{rSection}{Summary}
-Senior software engineer with 14+ years building cloud platforms, object storage, and reliability systems, including 10+ years at Atlassian. Current work spans cloud-agnostic storage, Kubernetes migration, GCP readiness, storage analytics, and incident response for Transaction Data Platform. Earlier roles covered observability systems, a \$2M+ metrics migration, 180M metrics/minute pipelines, synthetic monitoring, and Jira Cloud SRE. Turns ambiguous platform risk into RFCs, production code, operating models, and tools adopted outside the immediate team.
+Senior software engineer with 14+ years building cloud platforms, object storage, and reliability systems, including 10+ years at Atlassian. Current work is on Atlassian's internal S3-compatible storage service: GCP migration, Kubernetes, storage analytics, incident response, and cost/reliability work. Earlier roles covered observability systems, a \$2M+ metrics migration, 180M metrics/minute pipelines, synthetic monitoring, and Jira Cloud SRE. Turns ambiguous platform risk into RFCs, production code, operating models, and tools adopted by other teams.
 \end{rSection}
 \vspace{-0.15cm}
 
@@ -71,22 +71,22 @@ Senior software engineer with 14+ years building cloud platforms, object storage
 
 \begin{rSection}{Engineering Experience}
 
-\begin{rSubsection}{Cloud-Agnostic Object Storage and Platform Reliability}{\textcolor{black!60}{Aug 2023 -- Present}}{Senior Engineer, Transaction Data Platform / Object Store, Atlassian}{Sydney, Australia}
-\item Led Object Store's GCP staging migration across compute, storage, credentials, shard provisioning, checksums, and deployment readiness, delivering a functional milestone four weeks early for GCP.
-\item Designed storage architecture in Kotlin across S3-compatible APIs, data residency, encryption, backup/restore, GCS integration, and multi-shard deployment paths for cloud-agnostic operation.
-\item Wrote RFCs for GCS checksum handling, control-service dependency removal, and seekable compression, turning reliability, cost, and migration trade-offs into clear Object Store direction for senior review.
-\item Built S3 Inventory and DynamoDB export ingestion into the data platform, giving teams service-level cost attribution, object verification, and self-service analytics over multi-terabyte datasets.
+\begin{rSubsection}{Cloud Storage Platform and Multi-Cloud Reliability}{\textcolor{black!60}{Aug 2023 -- Present}}{Senior Engineer, Cloud Storage Platform, Atlassian}{Sydney, Australia}
+\item Led GCP migration for Atlassian's internal S3-compatible storage service across compute, credentials, data-integrity checks, and deployment readiness, delivering a critical milestone four weeks early.
+\item Designed Kotlin architecture for S3-compatible storage APIs, data residency, encryption, backup/restore, GCS integration, and multi-shard deployment paths for cloud-agnostic operation across AWS and GCP.
+\item Wrote RFCs for GCS checksum handling, reducing control-plane dependencies, and seekable compression, turning reliability, cost, and migration trade-offs into clear storage direction for senior review.
+\item Built S3 Inventory and DynamoDB export ingestion into the data platform, giving service owners storage cost attribution, object verification, and self-service analytics over multi-terabyte datasets.
 \item Replaced slow storage investigations with self-service queries, cutting 24-hour verification jobs to 5-minute checks and safely enabling \$25K/month object-tag savings across production buckets.
-\item During a Sev 2, built analysis pipelines under pressure to join DynamoDB exports with S3 inventory, prove no data loss, and start continuous object verification for the platform's top risk.
-\item Created service-descriptor diff pipeline in Go/Bitbucket that flags risky deployment changes before merge, adopted by Object Store, Media, and ERS to catch blast-radius issues before production.
-\item Led service sharding through scope expansion, delivering an isolated-cloud shard three weeks early and a repeatable deployment method later reused by platform teams and downstream services.
+\item During a Sev 2, built analysis pipelines under pressure to join database exports with S3 inventory, prove no data loss, and start continuous object verification for the platform's top risk.
+\item Created deployment-descriptor diff pipeline in Go/Bitbucket that flags risky infrastructure changes before merge, adopted by multiple platform teams to catch blast-radius issues before production.
+\item Led sharding work that split the storage service into isolated deployment units, delivering an isolated-cloud shard three weeks early and a repeatable rollout method for future shards and regions.
 \item Set upload/download SLOs from production traffic and ran Locust capacity tests at 1.3M requests/minute, giving on-call engineers repeatable evidence for safe scaling and rate-limit decisions.
 \end{rSubsection}
 
 \begin{rSubsection}{Observability Platform Migration and Engineering Leadership}{\textcolor{black!60}{Oct 2020 -- Aug 2023}}{Engineering Manager, Observability, Atlassian}{Sydney, Australia}
 \item Led Better Metrics migration from Datadog to SignalFx for Atlassian engineering, saving more than \$2M annually while keeping critical metrics workflows stable for thousands of engineers during transition.
 \item Managed observability engineers through vendor evaluation, roadmap planning, stakeholder communication, incident reviews, hiring, coaching, performance development, and operational trade-offs.
-\item Directed multi-vendor ingestion work and config-as-code automation so thousands of internal engineers could move platforms with less manual coordination and clearer migration status across teams.
+\item Led delivery of an HTTP routing layer between metrics aggregators and upstream observability sinks, using Atlassian's open-source GoStatsD project to make the Datadog-to-SignalFx migration safer at scale.
 \end{rSubsection}
 
 \begin{rSubsection}{High-Scale Metrics Infrastructure and Synthetic Monitoring}{\textcolor{black!60}{Jun 2017 -- Oct 2020}}{Senior Engineer, Observability, Atlassian}{Sydney, Australia}
