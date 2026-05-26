@@ -77,7 +77,7 @@ Senior software engineer with 14+ years building cloud platforms, object storage
 \item Wrote RFCs for GCS checksum handling, reducing control-plane dependencies, and seekable compression, turning reliability, cost, and migration trade-offs into clear storage direction.
 \item Built S3 Inventory and DynamoDB export ingestion into the data platform, giving service owners storage cost attribution, object verification, and self-service analytics over multi-terabyte datasets.
 \item Replaced slow storage investigations with self-service queries, cutting 24-hour verification jobs to 5-minute checks and safely enabling \$25K/month object-tag savings across production buckets.
-\item During a Sev 2, built analysis pipelines under pressure to join database exports with S3 inventory, prove no data loss, and start continuous object verification for the platform's top risk.
+\item During a high impact incident, built analysis pipelines under pressure to join database exports with S3 inventory, prove no data loss, and start continuous object verification for the platform's top risk.
 \item Created deployment-descriptor diff pipeline in Go/Bitbucket that flags risky infrastructure changes before merge, adopted by multiple platform teams to catch blast-radius issues before production.
 \item Led sharding work that split the storage service into isolated deployment units, delivering an isolated-cloud shard three weeks early and a repeatable rollout method for future shards and regions.
 \item Set upload/download SLOs from production traffic and ran Locust capacity tests at 1.3M requests/minute, giving on-call engineers repeatable evidence for safe scaling and rate-limit decisions.
