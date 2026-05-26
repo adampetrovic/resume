@@ -14,8 +14,8 @@ Note: Requires the Lato font and FontAwesome packages to be installed in your La
 
 This repository automatically generates and releases the resume PDF using GitHub Actions:
 
-- **Trigger**: Pushes to the `master` branch or manual workflow dispatch
-- **Output**: Date-stamped release (e.g., `resume-2025-07-25`) with attached PDF
+- **Trigger**: Pull requests compile the PDF; pushes to `master` or manual workflow dispatch also compile and release
+- **Output**: Date-stamped release (e.g., `resume-2025-07-25`) with attached PDF on `master`
 - **Location**: Check the [Releases](../../releases) page for the latest version
 
 The workflow compiles the LaTeX source using pdflatex and creates a new release with the generated PDF attached.
