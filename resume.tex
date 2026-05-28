@@ -49,7 +49,7 @@
 \begin{center}
         {\LARGE \textbf{\textcolor{accent}{Adam Petrovic}}}\\
         \vspace{0.10cm}
-        Senior Software Engineer -- Distributed Systems, Cloud Infrastructure \& Reliability
+        Senior Software Engineer -- Storage Platforms, Cloud Infrastructure \& Reliability
         \vspace{0.20cm}
         \\
         Sydney, Australia
@@ -64,7 +64,7 @@
 \vspace{-1em}
 \subsection*{\Large \textcolor{accent}{Summary}}
 
-Senior software engineer with 14+ years building cloud platforms, object storage, and reliability systems, including 10+ years at Atlassian. Current work is on Atlassian's internal S3-compatible storage service: GCP migration, Kubernetes, storage analytics, incident response, and cost/reliability work. Earlier roles covered observability systems, a \$2M+ metrics migration, 180M metrics/minute pipelines, synthetic monitoring, and Jira Cloud SRE. Enjoys turning complexity and risk into RFCs, production code, and tooling adopted by other teams across the organisation.
+Senior software engineer with 14+ years building high-scale cloud infrastructure, storage platforms, observability systems, and reliability tooling. Current work focuses on Atlassian's internal S3-compatible Object Store platform managing 60PB+ of mixed object data, including GCP/Kubernetes migration, data-integrity verification, storage analytics, compliance, and cost/reliability improvements. Previously led company-wide observability and metrics platform work, including a \$2M+ annual vendor migration and 180M metrics/minute pipelines. Focused on turning ambiguous infrastructure risk into architecture, RFCs, production systems, and tooling adopted across teams.
 
 \vspace{0.45em}
 \accentrule
@@ -73,8 +73,8 @@ Senior software engineer with 14+ years building cloud platforms, object storage
 
 \hyphenpenalty=1000
 \begin{itemize}[leftmargin=1em,noitemsep]
-        \item \textbf{Languages:} Kotlin, Go, Python, Java, TypeScript, JavaScript, SQL, Bash
-        \item \textbf{Cloud \& Infrastructure:} AWS, GCP, Kubernetes, Docker, Spinnaker, Flux, Helm, Kustomize, Talos Linux, CI/CD
+        \item \textbf{Languages:} Kotlin, Go, Python, Java, TypeScript, SQL, Bash
+        \item \textbf{Cloud \& Infrastructure:} AWS, GCP, Kubernetes, Docker, Spinnaker, Helm, CI/CD
         \item \textbf{Storage \& Data Systems:} S3, GCS, DynamoDB, PostgreSQL, MySQL, Redis, sharding, backup/restore
         \item \textbf{Reliability \& Observability:} SignalFx, Datadog, Prometheus, Grafana, Splunk, StatsD, Sentry, synthetic monitoring, SLOs
         \item \textbf{Data \& Performance:} Kafka, Apache Flink, SQS, Databricks, Athena, Locust, high-volume telemetry pipelines
@@ -96,11 +96,11 @@ Senior software engineer with 14+ years building cloud platforms, object storage
               {\emph{Senior Engineer, Transactional Data Platform (Object Store)}}
               {\emph{August 2023 -- Present}}
               \begin{itemize*}
-                    \item Designed Kotlin-based architecture for Atlassian's internal S3-compatible Object Store service, which manages 60PB+ of product data across the company, covering storage APIs, data residency, encryption, backup and restore, GCS integration, and multi-shard deployment across AWS and GCP.
-                    \item Led the GCP migration by re-architecting Object Store from a traditional microservice into a Kubernetes-native workload, modernising compute, credentials, data-integrity checks, and deployment readiness to deliver a critical company-wide OKR four weeks early.
-                    \item Helped shape Object Store's technical direction through RFCs and DACIs for GCS checksum handling and seekable compression, turning reliability, cost, and migration trade-offs into clear team decisions.
-                    \item Built S3 Inventory and DynamoDB export pipelines into Databricks, giving service owners and Object Store operators near real-time access to query 60PB+ of stored data for arbitrary questions about cost attribution, object verification, incident response, and production savings, turning multi-day data-integrity investigations into repeatable verification jobs with alerting and enabling \$25K/month in object-tag savings.
-                    \item Created a Bitbucket deployment diff pipeline that flags risky infrastructure changes before merge, adopted by multiple platform teams to catch blast-radius issues before production.
+                    \item Designed Kotlin-based architecture for Atlassian's S3-compatible Object Store platform, managing 60PB+ of mixed object data and layering encryption, compression, data residency, compliance, and backup/restore over cloud storage for product and platform teams.
+                    \item Owned architecture, migration strategy, and implementation for moving Object Store from a traditional microservice to a Kubernetes-native workload on GCP, establishing a migration pattern reused by partner teams while balancing speed with data-integrity safeguards across runtime, credentials, verification, and rollout to deliver a company-wide OKR four weeks early.
+                    \item Drove Object Store's technical direction through RFCs and decision records for GCS checksums and seekable compression, turning ambiguous migration, cost, and performance trade-offs into roadmap decisions.
+                    \item Built daily S3 Inventory and DynamoDB export pipelines into Databricks, enabling self-service queries over 60PB+ of mixed object data for ownership, cost, integrity, incidents, compliance, and risk; turned multi-day data-integrity investigations into production verification jobs with alerting and delivered \$25K/month in object-tag savings.
+                    \item Created a Bitbucket deployment-config diff pipeline that flags risky changes before merge, adopted by multiple platform teams to catch blast-radius issues before production.
                     \item Built repeatable Locust load tests for staging, letting engineers validate feature changes under production-like traffic, compare results across runs, and build confidence before deployment.
               \end{itemize*}
             \headerrow
@@ -108,8 +108,8 @@ Senior software engineer with 14+ years building cloud platforms, object storage
               {\emph{October 2020 -- August 2023}}
               \begin{itemize*}
                     \item Led company-wide metrics migration from Datadog to SignalFx for Atlassian engineering, saving more than \$2M annually while keeping critical metrics workflows stable for thousands of engineers during transition.
-                    \item Managed observability engineers through vendor evaluation, roadmap planning, stakeholder communication, incident reviews, hiring, coaching, performance development, and operational trade-offs.
-                    \item Led delivery of an HTTP routing layer between metrics aggregators and upstream observability sinks, using Atlassian's open-source GoStatsD project to make the Datadog-to-SignalFx migration safer at scale.
+                    \item Managed a 10-person team across roadmap, stakeholders, incidents, hiring, coaching, performance development, and operational trade-offs.
+                    \item Led architectural shift from StatsD-based metric delivery to OpenTelemetry on Kafka/Flink, proving the company-wide Kafka use case that later supported a dedicated Kafka platform team.
               \end{itemize*}
             \newpage
             \headerrow
