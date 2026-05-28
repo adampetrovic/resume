@@ -7,13 +7,17 @@
 \usepackage{textcomp}
 \usepackage{fontawesome}
 \usepackage{enumitem}
-\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\definecolor{accent}{HTML}{1F5E7A}
+\usepackage[colorlinks=true,urlcolor=accent,linkcolor=accent]{hyperref}
 \DeclareFontFamily{U}{fontawesomeOne}{}
 \DeclareFontShape{U}{fontawesomeOne}{m}{n}
 {<-> FontAwesome--fontawesomeone}{}
 \DeclareRobustCommand\FAone{\fontencoding{U}\fontfamily{fontawesomeOne}\selectfont}
 \pagestyle{empty}
 \setlength{\tabcolsep}{0em}
+\newcommand{\accentrule}{{\color{accent}\hrule}}
+\newcommand{\accenticon}[1]{\textcolor{accent}{#1}}
 
 % indentsection style, used for sections that aren't already in lists
 % that need indentation to the level of all text in the document
@@ -43,7 +47,7 @@
 \begin{document}
 
 \begin{center}
-        {\LARGE \textbf{Adam Petrovic}}\\
+        {\LARGE \textbf{\textcolor{accent}{Adam Petrovic}}}\\
         \vspace{0.10cm}
         Senior Software Engineer -- Distributed Systems, Cloud Infrastructure \& Reliability
         \vspace{0.20cm}
@@ -51,21 +55,21 @@
         Sydney, Australia
         \vspace{0.20cm}
         \\
-        \raisebox{-0.1\height}{\Large \faEnvelopeSquare} \href{mailto:adam@petrovic.com.au}{adam@petrovic.com.au} \ \ \ \ \raisebox{-0.1\height}{\Large \faLinkedinSquare} \href{https://linkedin.com/in/adampetrovic}{linkedin.com/in/adampetrovic}\\
+        \raisebox{-0.1\height}{\Large \accenticon{\faEnvelopeSquare}} \href{mailto:adam@petrovic.com.au}{adam@petrovic.com.au} \ \ \ \ \raisebox{-0.1\height}{\Large \accenticon{\faLinkedinSquare}} \href{https://linkedin.com/in/adampetrovic}{linkedin.com/in/adampetrovic}\\
         \vspace{0.10cm}
-        \raisebox{-0.1\height}{\Large \faGithubSquare} \href{https://github.com/adampetrovic}{github.com/adampetrovic} \ \ \ \ \raisebox{-0.1\height}{\Large \faGlobe} \href{https://adampetrovic.me}{adampetrovic.me}
+        \raisebox{-0.1\height}{\Large \accenticon{\faGithubSquare}} \href{https://github.com/adampetrovic}{github.com/adampetrovic} \ \ \ \ \raisebox{-0.1\height}{\Large \accenticon{\faGlobe}} \href{https://adampetrovic.me}{adampetrovic.me}
 \end{center}
 
-\hrule
+\accentrule
 \vspace{-1em}
-\subsection*{\Large Summary}
+\subsection*{\Large \textcolor{accent}{Summary}}
 
 Senior software engineer with 14+ years building cloud platforms, object storage, and reliability systems, including 10+ years at Atlassian. Current work is on Atlassian's internal S3-compatible storage service: GCP migration, Kubernetes, storage analytics, incident response, and cost/reliability work. Earlier roles covered observability systems, a \$2M+ metrics migration, 180M metrics/minute pipelines, synthetic monitoring, and Jira Cloud SRE. Enjoys turning complexity and risk into RFCs, production code, and tooling adopted by other teams across the organisation.
 
 \vspace{0.45em}
-\hrule
+\accentrule
 \vspace{-1em}
-\subsection*{\Large Skills}
+\subsection*{\Large \textcolor{accent}{Skills}}
 
 \hyphenpenalty=1000
 \begin{itemize}[leftmargin=1em,noitemsep]
@@ -76,9 +80,9 @@ Senior software engineer with 14+ years building cloud platforms, object storage
         \item \textbf{Data \& Performance:} Kafka, Apache Flink, SQS, Databricks, Athena, Locust, high-volume telemetry pipelines
 \end{itemize}
 
-\hrule
+\accentrule
 \vspace{-1em}
-\subsection*{\Large Experience}
+\subsection*{\Large \textcolor{accent}{Experience}}
 
 \renewcommand\labelitemi{}
 \renewcommand\labelitemii{$\bullet$}
@@ -89,24 +93,21 @@ Senior software engineer with 14+ years building cloud platforms, object storage
               {\textbf{Atlassian} (10+ Years)}
               {\textbf{Sydney, Australia}}
               \headerrow
-              {\emph{Senior Engineer, Transactional Data Platform}}
+              {\emph{Senior Engineer, Transactional Data Platform (Object Store)}}
               {\emph{August 2023 -- Present}}
               \begin{itemize*}
-                    \item Led GCP migration for Atlassian's internal S3-compatible storage service across compute, credentials, data-integrity checks, and deployment readiness, delivering a critical milestone four weeks early.
-                    \item Designed Kotlin architecture for S3-compatible storage APIs, data residency, encryption, backup/restore, GCS integration, and multi-shard deployment paths for cloud-agnostic operation across AWS and GCP.
-                    \item Wrote RFCs for GCS checksum handling, reducing control-plane dependencies, and seekable compression, turning reliability, cost, and migration trade-offs into clear storage direction.
-                    \item Built S3 Inventory and DynamoDB export ingestion into the data platform, giving service owners storage cost attribution, object verification, and self-service analytics over multi-terabyte datasets.
-                    \item Replaced slow storage investigations with self-service queries, cutting 24-hour verification jobs to 5-minute checks and safely enabling \$25K/month object-tag savings across production buckets.
-                    \item During a high impact incident, built analysis pipelines under pressure to join database exports with S3 inventory, prove no data loss, and start continuous object verification for the platform's top risk.
-                    \item Created deployment-descriptor diff pipeline in Go/Bitbucket that flags risky infrastructure changes before merge, adopted by multiple platform teams to catch blast-radius issues before production.
-                    \item Led sharding work that split the storage service into isolated deployment units, delivering an isolated-cloud shard three weeks early and a repeatable rollout method for future shards and regions.
+                    \item Designed Kotlin architecture for Atlassian's internal S3-compatible Object Store service, which manages 60PB+ of product data across the company, covering storage APIs, data residency, encryption, backup and restore, GCS integration, and multi-shard deployment across AWS and GCP.
+                    \item Led the GCP migration by re-architecting Object Store from a traditional microservice into a Kubernetes-native workload, modernising compute, credentials, data-integrity checks, and deployment readiness to deliver a critical company-wide OKR four weeks early.
+                    \item Helped shape Object Store's technical direction through RFCs and DACIs for GCS checksum handling and seekable compression, turning reliability, cost, and migration trade-offs into clear team decisions.
+                    \item Built S3 Inventory and DynamoDB export pipelines into Databricks, giving service owners and Object Store operators near real-time access to query 60PB+ of stored data for arbitrary questions about cost attribution, object verification, incident response, and production savings, turning multi-day data-integrity investigations into repeatable verification jobs with alerting and enabling \$25K/month in object-tag savings.
+                    \item Created a Bitbucket deployment diff pipeline that flags risky infrastructure changes before merge, adopted by multiple platform teams to catch blast-radius issues before production.
                     \item Built repeatable Locust load tests for staging, letting engineers validate feature changes under production-like traffic, compare results across runs, and build confidence before deployment.
               \end{itemize*}
             \headerrow
               {\emph{Engineering Manager, Observability}}
               {\emph{October 2020 -- August 2023}}
               \begin{itemize*}
-                    \item Led Better Metrics migration from Datadog to SignalFx for Atlassian engineering, saving more than \$2M annually while keeping critical metrics workflows stable for thousands of engineers during transition.
+                    \item Led company-wide metrics migration from Datadog to SignalFx for Atlassian engineering, saving more than \$2M annually while keeping critical metrics workflows stable for thousands of engineers during transition.
                     \item Managed observability engineers through vendor evaluation, roadmap planning, stakeholder communication, incident reviews, hiring, coaching, performance development, and operational trade-offs.
                     \item Led delivery of an HTTP routing layer between metrics aggregators and upstream observability sinks, using Atlassian's open-source GoStatsD project to make the Datadog-to-SignalFx migration safer at scale.
               \end{itemize*}
@@ -139,9 +140,9 @@ Senior software engineer with 14+ years building cloud platforms, object storage
               \end{itemize*}
 \end{itemize}
 
-\hrule
+\accentrule
 \vspace{-1em}
-\subsection*{\Large Education}
+\subsection*{\Large \textcolor{accent}{Education}}
 
 \begin{itemize}[leftmargin=1em]
         \parskip=0.1em
